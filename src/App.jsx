@@ -1,14 +1,24 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import './App.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+import Favorites from './pages/favorites/Favorites';
+import Details from './pages/details/Details';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
+      <div className="app">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/recipe-item/:id" element={<Details />} />
+        </Routes>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
