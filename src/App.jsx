@@ -1,4 +1,5 @@
-import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
@@ -7,6 +8,8 @@ import Favorites from './pages/favorites/Favorites';
 import Details from './pages/details/Details';
 
 function App() {
+
+
   return (
     <>
       <div className="app">
