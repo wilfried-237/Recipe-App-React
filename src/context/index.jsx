@@ -4,7 +4,7 @@ import Usefetch from "../Usefetch";
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
-  const [searchParam, setSearchParam] = useState("");
+  const [searchParam, setSearchParam] = useState("mango");
   const [recipeDetail, setRecipeDetail] = useState(null);
   const [data, loading, error] = Usefetch(searchParam);
 

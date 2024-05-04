@@ -6,8 +6,6 @@ import RecipeItem from "./../../components/RecipeItem/index";
 export default function Home() {
   const { data, loading, error } = useContext(GlobalContext);
 
-  console.log(data);
-
   if (loading) {
     return (
       <div className="return">

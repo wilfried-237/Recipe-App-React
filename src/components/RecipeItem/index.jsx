@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import './index.css'
-import Details from './../../pages/details/Details';
 
 export default function RecipeItem(item) {
-  console.log(item)
   return (
     <div className='item'>
         <img src={item.item.image_url} alt={item.item.publisher} />

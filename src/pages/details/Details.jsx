@@ -17,7 +17,8 @@ export default function Details() {
       }
      }
 
-    console.log(recipeDetail)
+     console.log(recipeDetail)
+
 
     useEffect(()=>{
      getRecipe()
@@ -25,22 +26,23 @@ export default function Details() {
     }, [params])
 
   return (
-    <div className='Detail'>
+    <div className='Detail container'>
       <div className="img">
-        <img src={recipeDetail.image_url} alt={recipeDetail.title} />
+        <img src={recipeDetail?.image_url} alt={recipeDetail?.title} />
       </div>
-      <div className="desc">
-        <h2>{recipeDetail.title}</h2>
-        <button>Add to Favorites</button>
+      <div className="description">
+        <h2>{recipeDetail?.title}</h2>
+        <button className='btn bg-primary text-light mt-3 mb-4'>Add to Favorites</button>
         {
-          recipeDetail && recipeDetail.ingredients? 
-            recipeDetail.ingredients.map((item, index)=> {
+          recipeDetail && recipeDetail?.ingredients? 
+            recipeDetail.ingredients?.map((i, index)=> {
               return(
-                <p key={index}>{item.quantity} {item.unit} {item.description}</p>
+                <p key={index}>{i?.quantity} {i?.unit} {i?.description}</p>
               )
             })
           :null
         }
+        <p>{}</p>
       </div>
     </div>
   )
