@@ -6,7 +6,7 @@ import { GlobalContext } from '../../context'
 export default function Details() {
 
     const params = useParams()
-    const {recipeDetail, setRecipeDetail} = useContext(GlobalContext)
+    const {recipeDetail, setRecipeDetail, addFavorites, favorites} = useContext(GlobalContext)
 
     async function getRecipe(){
       const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${params.id}`);
@@ -17,33 +17,35 @@ export default function Details() {
       }
      }
 
-     console.log(recipeDetail)
-
-
     useEffect(()=>{
      getRecipe()
+
+     return setRecipeDetail(null)
 
     }, [params])
 
   return (
-    <div className='Detail container'>
-      <div className="img">
-        <img src={recipeDetail?.image_url} alt={recipeDetail?.title} />
+    <>
+      {
+        recipeDetail && <div className='Detail container'>
+        <div className="img">
+          <img src={recipeDetail?.image_url} className="img-thumbnail" alt={recipeDetail?.title} />
+        </div>
+        <div className="description">
+          <h2>{recipeDetail?.title}</h2>
+          <button onClick={()=> addFavorites(recipeDetail)} className='btn bg-primary text-light mt-3 mb-4'>{favorites.findIndexOf(item => item.id === recipeDetail?.id) === -1? "Add to Favorites": "Remove from favorites"}</button>
+          {
+            recipeDetail && recipeDetail?.ingredients? 
+              recipeDetail.ingredients?.map((i, index)=> {
+                return(
+                  <p key={index}>{i?.quantity} {i?.unit} {i?.description}</p>
+                )
+              })
+            :null
+          }
+        </div>
       </div>
-      <div className="description">
-        <h2>{recipeDetail?.title}</h2>
-        <button className='btn bg-primary text-light mt-3 mb-4'>Add to Favorites</button>
-        {
-          recipeDetail && recipeDetail?.ingredients? 
-            recipeDetail.ingredients?.map((i, index)=> {
-              return(
-                <p key={index}>{i?.quantity} {i?.unit} {i?.description}</p>
-              )
-            })
-          :null
-        }
-        <p>{}</p>
-      </div>
-    </div>
+      }
+    </>
   )
 }

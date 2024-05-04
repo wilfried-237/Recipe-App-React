@@ -9,7 +9,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="return">
-        <span>Data Loading Please wait...</span>
+        <div className="spinner-border text-primary mt-5"></div>
       </div>
     );
   }

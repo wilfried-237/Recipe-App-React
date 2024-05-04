@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Usefetch(query) {
   const [data, setData] = useState(null);
@@ -7,14 +8,19 @@ export default function Usefetch(query) {
 
   async function fetchData(q) {
     try {
-        setLoading(true);
-      const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${q}`);
+      setLoading(true);
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${q}`
+      );
       const getData = await response.json();
+      const navigate = useNavigate();
+     
 
       if (getData?.data?.recipes) {
         setData(getData?.data?.recipes);
         setLoading(false);
         setError(null);
+        navigate("/");
       }
     } catch (e) {
       setError(e.message);
@@ -23,10 +29,10 @@ export default function Usefetch(query) {
   }
 
   useEffect(() => {
-    if(query != ""){
+    if (query != "") {
       fetchData(query);
     }
   }, [query]);
 
-  return [data, loading, error]
+  return [data, loading, error];
 }
