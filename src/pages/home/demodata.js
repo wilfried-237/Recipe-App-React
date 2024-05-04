@@ -1,4 +1,4 @@
-export const demodata = [
+const demodata = [
     {
         "publisher": "Epicurious",
         "image_url": "http://forkify-api.herokuapp.com/images/epicuriousfacebook511b.png",
@@ -252,3 +252,5 @@ export const demodata = [
         "id": "5ed6604591c37cdc054bc93d"
     }
 ];
+
+export default demodata
