@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="Home">
       {data
-        ? data.map((item) => <RecipeItem key={item.id} item={item} />)
+        ? data.map((item, index) => <RecipeItem key={index} item={item} />)
         : <div>No Result Please search for something</div>}
     </div>
   );

@@ -20,9 +20,9 @@ export default function Details() {
     useEffect(()=>{
      getRecipe()
 
-     return setRecipeDetail(null)
-
     }, [params])
+
+    const index = favorites.findIndex(item => item.id === recipeDetail.id);
 
   return (
     <>
@@ -33,7 +33,8 @@ export default function Details() {
         </div>
         <div className="description">
           <h2>{recipeDetail?.title}</h2>
-          <button onClick={()=> addFavorites(recipeDetail)} className='btn bg-primary text-light mt-3 mb-4'>{favorites.findIndexOf(item => item.id === recipeDetail?.id) === -1? "Add to Favorites": "Remove from favorites"}</button>
+          
+          <button onClick={()=> addFavorites(recipeDetail)} className='btn bg-primary text-light mt-3 mb-4'>{index === -1? "Add to Favorites" : "Remove from Favorites"}</button>
           {
             recipeDetail && recipeDetail?.ingredients? 
               recipeDetail.ingredients?.map((i, index)=> {

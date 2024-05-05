@@ -42,9 +42,9 @@ export default function Navbar() {
               onChange={(event) => setSearchParam(event.target.value)}
               placeholder="Enter Item..."
             />
-            <button className="btn btn-primary" type="button">
+            {/* <button className="btn btn-primary" type="button">
               Search
-            </button>
+            </button> */}
           </form>
         </div>
       </div>

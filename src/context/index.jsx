@@ -1,11 +1,9 @@
 import { createContext, useState } from "react";
 import Usefetch from "../Usefetch";
-import Favorites from './../pages/favorites/Favorites';
-
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
-  const [searchParam, setSearchParam] = useState("mango");
+  const [searchParam, setSearchParam] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [recipeDetail, setRecipeDetail] = useState(null);
   const [data, loading, error] = Usefetch(searchParam);
@@ -18,8 +16,9 @@ export default function GlobalState({ children }) {
     if(index === -1){
       copyFav.push(currentItem);
     }else{
-      copyFav.splice(index);
+      copyFav.splice(index, 1);
     }
+
     setFavorites(copyFav)
     
   }

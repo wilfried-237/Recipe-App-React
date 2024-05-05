@@ -5,6 +5,7 @@ export default function Usefetch(query) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   async function fetchData(q) {
     try {
@@ -13,7 +14,6 @@ export default function Usefetch(query) {
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${q}`
       );
       const getData = await response.json();
-      const navigate = useNavigate();
      
 
       if (getData?.data?.recipes) {
