@@ -9,18 +9,16 @@ export default function GlobalState({ children }) {
   const [data, loading, error] = Usefetch(searchParam);
 
   function addFavorites(currentItem) {
-    
     const copyFav = [...favorites];
-    const index = copyFav.findIndex(item => item.id === currentItem.id);
+    const index = copyFav.findIndex((item) => item.id === currentItem.id);
 
-    if(index === -1){
+    if (index === -1) {
       copyFav.push(currentItem);
-    }else{
+    } else {
       copyFav.splice(index, 1);
     }
 
-    setFavorites(copyFav)
-    
+    setFavorites(copyFav);
   }
 
   return (
@@ -34,7 +32,7 @@ export default function GlobalState({ children }) {
         recipeDetail,
         setRecipeDetail,
         addFavorites,
-        favorites, 
+        favorites,
         setFavorites,
       }}
     >
